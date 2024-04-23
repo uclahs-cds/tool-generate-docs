@@ -134,6 +134,7 @@ def backfill_tag_docs(pipeline_url: str):
 
     checkrun(
         ["docker", "build", ".", "-t", image],
+        cwd=Path(__file__).parent,
         context="building Docker image"
     )
 

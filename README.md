@@ -1,20 +1,46 @@
-# Project/Repo Title
+# Build and Deploy Pipeline Documentation
 
-Template Repository for the Boutros Lab general project repos. Describe a simple overview of use/purpose here.
+This Github Action builds a documentation website and deploys it to [GitHub Pages](https://pages.github.com/) for the UCLAHS-CDS pipelines using [MKDocs](https://www.mkdocs.org/).
 
-## Description
+The pipeline's README.md is split into individual pages based on [level 2 headings](https://www.markdownguide.org/basic-syntax/#headings). A MkDocs config yaml file can also be used to specify specific parameters including additional documentation. Documentation must be written in Markdown syntax.
 
-An in-depth paragraph about your project and overview of use.
+## Usage
+
+```yaml
+---
+name: Generate Docs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v[0-9]*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: uclahs-cds/tool-generate-docs@v1
+```
+
+## Parameters
+
+Parameters can be specified using the [`with`](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runsstepswith) option.
+
+| Parameter | Type | Required | Description |
+| ---- | ---- | ---- | ---- |
+| `readme` | string | no | Relative path to the README file. Defaults to 'README.md' |
+| `mkdocs_config` | string | no | Relative path to the MKDocs config yaml. |
 
 ## License
 
-Author: Name1(username1@mednet.ucla.edu), Name2(username2@mednet.ucla.edu)
+Author: Nicholas Wiltsie, Chenghao Zhu
 
-[This project] is licensed under the GNU General Public License version 2. See the file LICENSE.md for the terms of the GNU GPL license.
+tool-generate-docs is licensed under the GNU General Public License version 2. See the file LICENSE.md for the terms of the GNU GPL license.
 
-<one line to give the project/program's name and a brief idea of what it does.>
-
-Copyright (C) 2023 University of California Los Angeles ("Boutros Lab") All rights reserved.
+Copyright (C) 2024 University of California Los Angeles ("Boutros Lab") All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 

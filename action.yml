@@ -1,15 +1,15 @@
 ---
-name: 'Render and deploy docs'
-description: 'Render pipeline documentation and deploy to GH-Pages'
+name: Render and deploy docs
+description: Render pipeline documentation and deploy to GH-Pages
 inputs:
   readme:
-    description: 'Relative path to the README file.'
+    description: Relative path to the README file
     required: false
-    default: 'README.md'
+    default: README.md
   mkdocs_config:
-    description: 'Relative path to the MkDocs config yaml.'
+    description: Relative path to the MkDocs config yaml
     required: false
-    default: 'None'
+    default: "None"
 
 runs:
   using: "composite"

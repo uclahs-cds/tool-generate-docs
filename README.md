@@ -34,6 +34,35 @@ Parameters can be specified using the [`with`](https://docs.github.com/en/action
 | `readme` | string | no | Relative path to the README file. Defaults to 'README.md' |
 | `mkdocs_config` | string | no | Relative path to the MKDocs config yaml. |
 
+## Backfilling Documentation
+
+This Action only creates documentation for new tags and commits. If you want to backfill documentation for older tags, you can do so with the [`backfill.py`](./internal-action/backfill.py) script:
+
+```console
+usage: backfill.py [-h] repo_url
+
+positional arguments:
+  repo_url
+
+options:
+  -h, --help  show this help message and exit
+```
+
+The script generates all documentation locally and serves it at <http://localhost:8000> for review. It then waits for user approval before pushing anything to GitHub.
+
+```console
+$ ./internal-action/backfill.py git@github.com:uclahs-cds/user-nwiltsie.git
+Cloning repository into /var/folders/q5/pzb2r_1s01l6gvysk3cglxm4wpvxcb/T/tmpldl3gdxr ...
+Generating docs for tag `v1.0.1`
+Generating docs for tag `v1.0.2-rc.1`
+Generating docs for tag `v1.0.2-rc.2`
+Generating docs for tag `v1.0.2`
+Generating docs for tag `v1.0.3`
+Generating docs for tag `v1.0.4`
+Updated documentation at http://localhost:8000/
+Push these docs live [yes/no]?
+```
+
 ## License
 
 Author: Nicholas Wiltsie, Chenghao Zhu

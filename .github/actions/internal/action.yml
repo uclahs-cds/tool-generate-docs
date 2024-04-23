@@ -12,11 +12,9 @@ inputs:
     default: 'None'
 
 runs:
-  using: "composite"
-  steps:
-    - uses: actions/checkout@v4
-
-    - uses: ./.github/actions/internal
-      with:
-        readme: ${{ inputs.readme }}
-        mkdocs_config: ${{ inputs.mkdocs_config }}
+  using: 'docker'
+  image: 'Dockerfile'
+  entrypoint: '/src/action.py'
+  args:
+    - ${{ inputs.mkdocs_config }}
+    - ${{ inputs.readme }}

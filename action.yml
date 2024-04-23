@@ -16,7 +16,10 @@ runs:
   steps:
     - uses: actions/checkout@v4
 
-    - uses: ./.github/actions/internal
+    - shell: bash
+      run: cp -r '${{ github.action_path }}/internal-action' .git/
+
+    - uses: ./.git/internal-action
       with:
         readme: ${{ inputs.readme }}
         mkdocs_config: ${{ inputs.mkdocs_config }}

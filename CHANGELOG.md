@@ -1,5 +1,5 @@
 # Changelog
-All notable changes to the tool_name Docker file.
+All notable changes to the tool-generate-docs Action.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
@@ -8,32 +8,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ---
 
 ## [Unreleased]
-### Changed
-- Update links in on-prem Confluence to point to cloud-based Confluence
-- Update `.gitignore` - Add common non-plain text file extensions (e.g. image and Office suite)
-- Change something but it is not part of the last release.
 
----
-
-## [1.0.0] - YYYY-MM-DD
 ### Added
-- For new features.
-- Add item 1.
+- Copy files from original Action repository
 
 ### Changed
-- For changes in existing functionality.
-- Change item 1.
-
-### Deprecated
-- For soon-to-be removed features.
-
-### Removed
-- For now removed features.
-- Remove item 1.
-
-### Fixed
-- For any bug fixes.
-- Fix item 1.
-
-### Security
-- In case of vulnerabilities.
+- Include `actions/checkout` step as part of this Action

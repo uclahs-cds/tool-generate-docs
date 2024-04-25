@@ -1,0 +1,25 @@
+---
+name: Render and deploy docs
+description: Render pipeline documentation and deploy to GH-Pages
+inputs:
+  readme:
+    description: Relative path to the README file
+    required: false
+    default: README.md
+  mkdocs_config:
+    description: Relative path to the MkDocs config yaml
+    required: false
+    default: "None"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
+
+    - shell: bash
+      run: cp -r '${{ github.action_path }}/internal-action' .git/
+
+    - uses: ./.git/internal-action
+      with:
+        readme: ${{ inputs.readme }}
+        mkdocs_config: ${{ inputs.mkdocs_config }}

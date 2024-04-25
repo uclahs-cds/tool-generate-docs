@@ -1,0 +1,20 @@
+---
+name: 'Render and deploy docs'
+description: 'Render pipeline documentation and deploy to GH-Pages'
+inputs:
+  readme:
+    description: 'Relative path to the README file.'
+    required: false
+    default: 'README.md'
+  mkdocs_config:
+    description: 'Relative path to the MkDocs config yaml.'
+    required: false
+    default: 'None'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  entrypoint: '/src/action.py'
+  args:
+    - ${{ inputs.mkdocs_config }}
+    - ${{ inputs.readme }}

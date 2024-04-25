@@ -31,8 +31,8 @@ Parameters can be specified using the [`with`](https://docs.github.com/en/action
 
 | Parameter | Type | Required | Description |
 | ---- | ---- | ---- | ---- |
-| `readme` | string | no | Relative path to the README file. Defaults to 'README.md' |
-| `mkdocs_config` | string | no | Relative path to the MKDocs config yaml. |
+| `readme` | string | no | Relative path to the README file. Defaults to `'README.md'`. |
+| `mkdocs_config` | string | no | Relative path to the MKDocs config yaml. Defaults to `'None'`. |
 
 ## Backfilling Documentation
 
